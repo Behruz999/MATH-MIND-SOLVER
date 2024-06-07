@@ -218,6 +218,20 @@ export const MainPage = () => {
     setRefreshKey(refreshKey + 1)
   }
 
+  const getSummaryImageSrc = (percentCorrect: string) => {
+    // Convert the percentCorrect string to a number for comparison
+    const percentage = parseFloat(percentCorrect.replace('%', ''));
+
+    switch (true) {
+      case percentage > 50:
+        return "/rag-doll-with-checklist-green-pencil-fotor-bg-remover-20240430201428.png";
+      // Add more cases if needed
+      default:
+        return "/rag-doll-with-red-pencil-checklist-fotor-bg-remover-20240430201451.png";
+    }
+  };
+  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setTime((prevTime) => {
@@ -403,11 +417,11 @@ export const MainPage = () => {
                   <div className="summary-top">
                     <div className="row pb-5">
                       <div className="col-md-12 flex flex-col items-center">
-                        <img className="summary-img w-32 h-32" src={
-                          summaries?.percentCorrect == '0.00%' ?
-                            "/rag-doll-with-red-pencil-checklist-fotor-bg-remover-20240430201451.png" :
-                            "/rag-doll-with-checklist-green-pencil-fotor-bg-remover-20240430201428.png"
-                        } alt="summary image" />
+                        <img
+                          className="summary-img w-32 h-32"
+                          src={getSummaryImageSrc(summaries?.percentCorrect)}
+                          alt="summary image"
+                        />
 
                         <div className="summary-middle-place mt-4 text-center">
                           <h3 className="sum-total text-xl font-semibold">Total: {summaries?.examplesCount}/{summaries?.totalCorrect}</h3>
