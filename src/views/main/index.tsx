@@ -244,6 +244,10 @@ export const MainPage = () => {
   useEffect(() => {
   }, [refreshKey]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentCase]);
+
   return (
     <>
       {
@@ -330,40 +334,40 @@ export const MainPage = () => {
           </div>
           :
           currentCase === 'exams' ?
-            <div className="example_wrapper bg-gray-100 min-h-screen p-4 sm:p-8">
-              <div className="topbar flex justify-between items-center bg-white p-4 shadow-md rounded-lg">
-                <div className="top_left">
-                  <h3 className="not_refresh text-xl">Please, don't refresh the page</h3>
+            <div className="example_wrapper bg-gray-100 min-h-screen p-2 sm:p-4 md:p-8">
+              <div className="topbar flex flex-col sm:flex-row justify-between items-center bg-white p-2 sm:p-4 shadow-md rounded-lg">
+                <div className="top_left mb-2 sm:mb-0">
+                  <h3 className="not_refresh text-base sm:text-xl">Please, don't refresh the page</h3>
                 </div>
                 <div className="top_right">
-                  <h3 className="timer font-orbitron text-xl">{`${min < 10 ? '0' + min : min}:${sec < 10 ? '0' + sec : sec}`}</h3>
+                  <h3 className="timer font-orbitron text-base sm:text-xl">{`${min < 10 ? '0' + min : min}:${sec < 10 ? '0' + sec : sec}`}</h3>
                 </div>
               </div>
-              <div className="container mt-8">
-                <div className="example_header text-center mb-8">
-                  <h4 className="example_header_txt text-3xl font-bold capitalize">Generated Examples</h4>
+              <div className="container mt-4 sm:mt-8">
+                <div className="example_header text-center mb-4 sm:mb-8">
+                  <h4 className="example_header_txt text-2xl sm:text-3xl font-bold capitalize">Generated Examples</h4>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-4">
                   {examples?.map((ex: exampleProps, i: number) => (
-                    <div className="exam_kol3 flex items-center justify-between bg-white p-4 rounded-lg shadow-md" key={i}>
-                      <input className="ex_question text-center text-2xl sm:text-3xl w-24 sm:w-32 border bg-white border-gray-300 rounded p-2" value={ex?.num1} type="text" readOnly />
-                      <span className="operat text-2xl sm:text-3xl mx-2">
+                    <div className="exam_kol3 flex items-center justify-between bg-white p-2 sm:p-4 rounded-lg shadow-md" key={i}>
+                      <input className="ex_question text-center text-lg sm:text-2xl w-16 sm:w-24 md:w-32 border bg-white border-gray-300 rounded p-1 sm:p-2" value={ex?.num1} type="text" readOnly />
+                      <span className="operat text-lg sm:text-2xl mx-1 sm:mx-2">
                         {ex?.operation === 'addition' ? '+'
                           : ex?.operation === 'subtraction' ? '-'
                             : ex?.operation === 'multiplication' ? '×' : '÷'}
                       </span>
-                      <input className="ex_question text-center text-2xl sm:text-3xl w-24 sm:w-32 border bg-white border-gray-300 rounded p-2" value={ex?.num2} type="text" readOnly />
-                      <span className="equal text-2xl sm:text-3xl mx-2">=</span>
-                      <input className="response text-center text-2xl sm:text-3xl w-24 sm:w-32 border bg-white border-gray-300 rounded p-2"
+                      <input className="ex_question text-center text-lg sm:text-2xl w-16 sm:w-24 md:w-32 border bg-white border-gray-300 rounded p-1 sm:p-2" value={ex?.num2} type="text" readOnly />
+                      <span className="equal text-lg sm:text-2xl mx-1 sm:mx-2">=</span>
+                      <input className="response text-center text-lg sm:text-2xl w-16 sm:w-24 md:w-32 border bg-white border-gray-300 rounded p-1 sm:p-2"
                         onChange={(e) => debouncedHandleInputChange(ex, e.target.value)}
                         type="number"
                         required />
                     </div>
                   ))}
                 </div>
-                <div className="finish_place text-center mt-8">
+                <div className="finish_place text-center mt-4 sm:mt-8">
                   <button
-                    className="start_btn bg-blue-500 text-white py-3 px-8 rounded-md relative overflow-hidden hover:bg-blue-600 transition-all duration-200"
+                    className="start_btn bg-blue-500 text-white py-2 sm:py-3 px-4 sm:px-8 rounded-md relative overflow-hidden hover:bg-blue-600 transition-all duration-200"
                     onMouseMove={handleMouseMove}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
@@ -373,7 +377,7 @@ export const MainPage = () => {
                     {isHovered && (
                       <div
                         className="shadow absolute bg-white bg-opacity-30 rounded-full pointer-events-none transition-all duration-200"
-                        style={{ left: shadowPosition.x, top: shadowPosition.y, width: '100px', height: '100px' }}
+                        style={{ left: shadowPosition.x, top: shadowPosition.y, width: '50px', height: '50px' }}
                       ></div>
                     )}
                   </button>
