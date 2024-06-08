@@ -230,7 +230,7 @@ export const MainPage = () => {
         return "/rag-doll-with-red-pencil-checklist-fotor-bg-remover-20240430201451.png";
     }
   };
-  
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -364,35 +364,21 @@ export const MainPage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 sm:gap-4">
                   {examples?.map((ex: exampleProps, i: number) => (
                     <div className="exam_kol3 flex items-center justify-between bg-white p-2 sm:p-4 rounded-lg shadow-md" key={i}>
-                      <input className="ex_question text-center text-lg sm:text-2xl w-16 sm:w-24 md:w-32 border bg-white border-gray-300 rounded p-1 sm:p-2" value={ex?.num1} type="text" readOnly />
-                      <span className="operat text-lg sm:text-2xl mx-1 sm:mx-2">
-                        {ex?.operation === 'addition' ? '+'
-                          : ex?.operation === 'subtraction' ? '-'
-                            : ex?.operation === 'multiplication' ? '×' : '÷'}
+                      <input className="ex_question text-center text-2xl sm:text-3xl md:text-4xl lg:text-4xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 border bg-white border-gray-300 rounded p-1 sm:p-2" value={ex?.num1} type="text" readOnly />
+                      <span className="operat text-2xl sm:text-3xl md:text-4xl lg:text-4xl mx-1 sm:mx-2">
+                        {ex?.operation === 'addition' ? '+' : ex?.operation === 'subtraction' ? '-' : ex?.operation === 'multiplication' ? '×' : '÷'}
                       </span>
-                      <input className="ex_question text-center text-lg sm:text-2xl w-16 sm:w-24 md:w-32 border bg-white border-gray-300 rounded p-1 sm:p-2" value={ex?.num2} type="text" readOnly />
-                      <span className="equal text-lg sm:text-2xl mx-1 sm:mx-2">=</span>
-                      <input className="response text-center text-lg sm:text-2xl w-16 sm:w-24 md:w-32 border bg-white border-gray-300 rounded p-1 sm:p-2"
-                        onChange={(e) => debouncedHandleInputChange(ex, e.target.value)}
-                        type="number"
-                        required />
+                      <input className="ex_question text-center text-2xl sm:text-3xl md:text-4xl lg:text-4xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 border bg-white border-gray-300 rounded p-1 sm:p-2" value={ex?.num2} type="text" readOnly />
+                      <span className="equal text-2xl sm:text-3xl md:text-4xl lg:text-4xl mx-1 sm:mx-2">=</span>
+                      <input className="response text-center text-2xl sm:text-3xl md:text-4xl lg:text-4xl w-full sm:w-1/2 md:w-1/3 lg:w-1/4 border bg-white border-gray-300 rounded p-1 sm:p-2" onChange={(e) => debouncedHandleInputChange(ex, e.target.value)} type="number" required />
                     </div>
                   ))}
                 </div>
                 <div className="finish_place text-center mt-4 sm:mt-8">
-                  <button
-                    className="start_btn bg-blue-500 text-white py-2 sm:py-3 px-4 sm:px-8 rounded-md relative overflow-hidden hover:bg-blue-600 transition-all duration-200"
-                    onMouseMove={handleMouseMove}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    onClick={() => next(time)}
-                  >
+                  <button className="start_btn bg-blue-500 text-white py-2 sm:py-3 px-4 sm:px-8 rounded-md relative overflow-hidden hover:bg-blue-600 transition-all duration-200" onMouseMove={handleMouseMove} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => next(time)}>
                     finish
                     {isHovered && (
-                      <div
-                        className="shadow absolute bg-white bg-opacity-30 rounded-full pointer-events-none transition-all duration-200"
-                        style={{ left: shadowPosition.x, top: shadowPosition.y, width: '50px', height: '50px' }}
-                      ></div>
+                      <div className="shadow absolute bg-white bg-opacity-30 rounded-full pointer-events-none transition-all duration-200" style={{ left: shadowPosition.x, top: shadowPosition.y, width: '50px', height: '50px' }}></div>
                     )}
                   </button>
                 </div>
